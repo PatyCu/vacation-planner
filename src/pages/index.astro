@@ -1,0 +1,34 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Calendar from '../components/Calendar.astro';
+
+const year = "2024";
+---
+
+<Layout title="Vacation Planner">
+	<main class="relative mx-auto p-8 md:p-12 max-w-7xl border p-4">
+		<h1 class="text-xl text-cyan-600">Vacation Planner {year}</h1>
+		<div class="w-fit border rounded-sm p-8">
+			<p><span class="font-bold">Year:</span> 2024</p>
+			<ul class="grid grid-cols-2 gap-8 mt-4">
+				<li>
+					<p>Name: Paty</p>
+					<p>PTOs: 23</p>
+					<div class="flex flex-wrap gap-x-4">
+						<p>Color:</p>
+						<div class="size-4 bg-cyan-600 mt-1"></div>
+					</div>
+				</li>
+				<li>
+					<p>Name: Oriol</p>
+					<p>PTOs: 28</p>
+					<div class="flex flex-wrap gap-x-4">
+						<p>Color:</p>
+						<div class="size-4 bg-amber-600 mt-1"></div>
+					</div>
+				</li>
+			</ul>
+		</div>
+		<Calendar year={year} />
+	</main>
+</Layout>

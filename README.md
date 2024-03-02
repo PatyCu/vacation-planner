@@ -2,6 +2,17 @@
 
 An SPA to help you plan and allocate your yearly PTO
 
+## 🥞 Tech stack
+
+- React 18
+- Tailwind CSS 3
+
+## 👩🏻‍🏫 Resources
+
+- Fountsource: open source fonts
+- Flowbite: open-source library of UI components built over tailwind
+- [Crea un calendario con tres lineas de CSS](https://midu.dev/crea-un-calendario-con-tres-lineas-de-css/) by Midudev
+
 # 🏠 Project Structure
 
 ```text

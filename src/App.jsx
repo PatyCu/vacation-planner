@@ -10,7 +10,7 @@ const App = () => {
         Vacation Planner
       </h1>
       <Settings />
-      <Calendar />
+     <Calendar />
     </main>
   );
 };

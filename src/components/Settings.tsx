@@ -1,4 +1,4 @@
-import ClickableColor from "./ClickableColor";
+import Vacationer from "./Vacationer";
 
 const year = "2024";
   const vacationers = [
@@ -15,8 +15,6 @@ const year = "2024";
   ];
 
 const Settings = () => {
-  
-  //const cssForColors = vacationers.map((vacationer, index) => (`size-4 bg-${vacationer.color} mt-1`));
   const cssForCols = `grid grid-cols-2 mt-4 gap-x-8`;
 
   return (
@@ -35,23 +33,12 @@ const Settings = () => {
       </div>
       <ul className={cssForCols}>
         {vacationers.map((vacationer, index) => (
-          <li
-            key={index}
-            className="border border-dashed p-4 bg-slate-100/20 hover:bg-slate-100/80"
-          >
-            <p>
-              <span className="font-bold">Name:</span> {vacationer.name}
-            </p>
-            <p>
-              <span className="font-bold">PTOs:</span> {vacationer.ptoDays}
-            </p>
-            <div className="flex flex-wrap gap-x-4">
-              <p>
-                <span className="font-bold">Color:</span>
-              </p>
-              <ClickableColor color={ vacationer.color } />
-            </div>
-          </li>
+          <Vacationer
+            index={index}
+            name={vacationer.name}
+            ptoDays={vacationer.ptoDays}
+            color={vacationer.color}
+          />
         ))}
       </ul>
     </div>

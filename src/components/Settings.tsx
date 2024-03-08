@@ -1,18 +1,22 @@
-const Settings = () => {
-  const year = "2024";
+import ClickableColor from "./ClickableColor";
+
+const year = "2024";
   const vacationers = [
     {
       name: "Paty",
       ptoDays: 23,
-      color: "cyan-600",
+      color: 0,
     },
     {
       name: "Oriol",
       ptoDays: 28,
-      color: "amber-600",
+      color: 1,
     },
   ];
-  const cssForColors = vacationers.map((vacationer, index) => (`size-4 bg-${vacationer.color} mt-1`));
+
+const Settings = () => {
+  
+  //const cssForColors = vacationers.map((vacationer, index) => (`size-4 bg-${vacationer.color} mt-1`));
   const cssForCols = `grid grid-cols-2 mt-4 gap-x-8`;
 
   return (
@@ -45,7 +49,7 @@ const Settings = () => {
               <p>
                 <span className="font-bold">Color:</span>
               </p>
-              <div className={cssForColors[index]}></div>
+              <ClickableColor color={ vacationer.color } />
             </div>
           </li>
         ))}

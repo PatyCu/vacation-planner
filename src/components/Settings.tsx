@@ -1,20 +1,12 @@
+import { VacationerType } from "../Types";
 import Vacationer from "./Vacationer";
 
-const year = "2024";
-  const vacationers = [
-    {
-      name: "Paty",
-      ptoDays: 23,
-      color: 0,
-    },
-    {
-      name: "Oriol",
-      ptoDays: 28,
-      color: 1,
-    },
-  ];
+interface SettingsProps {
+  year: string;
+  vacationers: Array<VacationerType>;
+}
 
-const Settings = () => {
+const Settings = ({ year, vacationers }: SettingsProps) => {
   const cssForCols = `grid grid-cols-2 mt-4 gap-x-8`;
 
   return (
@@ -31,16 +23,18 @@ const Settings = () => {
           className="block w-fit p-2 text-gray-900 border border-gray-300 rounded-lg bg-gray-50 text-xs focus:ring-blue-500 focus:border-blue-500 placeholder-gray-600/80"
         />
       </div>
-      <ul className={cssForCols}>
+      <div className={cssForCols}>
         {vacationers.map((vacationer, index) => (
           <Vacationer
+            key={ index }
             index={index}
             name={vacationer.name}
             ptoDays={vacationer.ptoDays}
             color={vacationer.color}
+            selectedPTO={vacationer.selectedPTO}
           />
         ))}
-      </ul>
+      </div>
     </div>
   );
 };

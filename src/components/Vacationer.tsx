@@ -1,22 +1,32 @@
-import { useContext } from "react";
+import { useContext, useState } from "react";
 import ClickableColor from "./ClickableColor";
 import ActiveVacationerContext from "../ActiveVacationerContext";
+
 interface VacationerProps {
-    index: number;
-    name: string;
-    ptoDays: number;
-    color: number;
+  index: number;
+  name: string;
+  ptoDays: number;
+  color: number;
+  selectedPTO: Array<string>;
 }
 
-const Vacationer: React.FC<VacationerProps> = ({ index, name, ptoDays, color }) => {
+const Vacationer = ({ index, name, ptoDays, color, selectedPTO }: VacationerProps) => {
   const [activeVacationer, setActiveVacationer] = useContext(ActiveVacationerContext);
-  const cssForActiveVacationer = activeVacationer == index ? "border-sky-500" : "";
+  const [activeColor, setActiveColor] = useState(color);
+  const cssForActiveVacationer = activeVacationer?.index == index ? "border-sky-500" : "";
+  const handleClick = (activeColor: number) => {
+        setActiveColor(activeColor);
+        setActiveVacationer(activeVacationer);
+  } 
+  
+  const updateActiveVacationer = (index: number) => {
+    setActiveVacationer({index: index, name: name, ptoDays: ptoDays, color: activeColor, selectedPTO: selectedPTO})
+  }
 
     return (
-        <li
-        key={index}
+        <div
         className={`border-2 border-dashed p-4 bg-slate-100/20 hover:bg-slate-100/80 ${cssForActiveVacationer}`}
-        onClick={() => setActiveVacationer(index)}
+        onClick={() => updateActiveVacationer(index)}
           >
             <p>
               <span className="font-bold">Name:</span> {name}
@@ -28,9 +38,9 @@ const Vacationer: React.FC<VacationerProps> = ({ index, name, ptoDays, color }) 
               <p>
                 <span className="font-bold">Color:</span>
               </p>
-              <ClickableColor color={ color } />
+              <ClickableColor color={ color } callback={handleClick}/>
             </div>
-          </li>
+          </div>
     );
 };
 

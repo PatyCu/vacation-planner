@@ -32,13 +32,16 @@ export function BuildCalendarDays(year: number, monthIndex: number) {
   const lastDay = new Date(year, monthIndex + 1, 0).getDate();
   const days = [];
   for (let day = 1; day <= lastDay; day++) {
-    days.push(day);
+    days.push({ day: day, colorDay: -1});
   }
   return days;
 }
 
-export function GetFirstDayAttributes(firstDay: number) {
-  let firstDayClass = "";
+//export function GetFirstDayAttributes(index: number, firstDay: number) {
+  //let firstDayClass = "";
+  //return index === 1 ? "col-start-" + firstDay : "";
+  //const firstDayClass = "col-start-" + firstDay;
+  /*
   if (firstDay === 1) {
     firstDayClass = "col-start-1";
   } else if (firstDay === 2) {
@@ -56,5 +59,6 @@ export function GetFirstDayAttributes(firstDay: number) {
   } else {
     firstDayClass = "col-start-1";
   }
-  return firstDayClass;
-}
+  */
+  //return firstDayClass;
+//}

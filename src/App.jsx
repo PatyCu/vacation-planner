@@ -5,13 +5,21 @@ import Settings from "./components/Settings";
 import Calendar from "./components/Calendar";
 
 const App = () => {
-  /*
-  const activeVacationer = useState({
-        index: 0,
-        ptoDays: 23,
-        color: 0
-    });
-    */
+  const year = "2024";
+  const vacationers = [
+    {
+      name: "Paty",
+      ptoDays: 23,
+      color: 0,
+      selectedPTO: []
+    },
+    {
+      name: "Oriol",
+      ptoDays: 28,
+      color: 1,
+      selectedPTO: []
+    },
+  ];
   const activeVacationer = useState(null);
   return (
     <main className="p-8">
@@ -19,8 +27,8 @@ const App = () => {
         Vacation Planner
       </h1>
       <ActiveVacationerContext.Provider value={activeVacationer}>
-        <Settings />
-        <Calendar />
+        <Settings year={year} vacationers={ vacationers } />
+        <Calendar vacationers={ vacationers } />
       </ActiveVacationerContext.Provider>
     </main>
   );

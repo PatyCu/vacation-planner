@@ -1,3 +1,6 @@
+import { useContext } from "react";
+import ActiveVacationerContext from "../ActiveVacationerContext";
+import { VacationerType } from "../Types";
 import {
   BuildCalendarWeekdayNames,
   BuildCalendarDays,
@@ -9,13 +12,17 @@ interface MonthProps {
   monthIndex: number;
   year: number;
   firstDay: number;
+  vacationers: Array<VacationerType>;
 }
 
-const Month = ({ monthName, monthIndex, year, firstDay }: MonthProps) => {
+const Month = ({ monthName, monthIndex, year, firstDay, vacationers }: MonthProps) => {
   const weekdayNames = BuildCalendarWeekdayNames("CA");
   const daysOfTheMonth = BuildCalendarDays(year, monthIndex);
-  const firstDayAttributes = `col-start-${firstDay}`;
+  const [activeVacationer, setActiveVacationer] = useContext(ActiveVacationerContext);
 
+  if (activeVacationer != null) {
+    //console.log(activeVacationer);
+  }
   return (
     <div className="border bg-slate-200/20 text-center">
       <h1 className="text-xl text-cyan-600 underline">
@@ -23,11 +30,11 @@ const Month = ({ monthName, monthIndex, year, firstDay }: MonthProps) => {
       </h1>
       <div className="grid grid-cols-7 p-4">
         {weekdayNames.map((day, index) => (
-          <Day key={index} day={day} isWeekName={true} firstDay={firstDay} />
+          <div className="text-cyan-600 size-6" key={ index }>{day}</div>
         ))}
 
         {daysOfTheMonth.map((day, index) => (
-          <Day key={index} day={day} isWeekName={false} firstDay={firstDay} />
+          <Day key={index} day={day.day} colorDay={day.colorDay} firstDay={firstDay} />
         ))}
       </div>
     </div>

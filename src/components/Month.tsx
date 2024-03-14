@@ -20,6 +20,11 @@ const Month = ({ monthName, monthIndex, year, firstDay, vacationers }: MonthProp
   const daysOfTheMonth = BuildCalendarDays(year, monthIndex);
   const [activeVacationer, setActiveVacationer] = useContext(ActiveVacationerContext);
 
+  const handleDayClicked = (day: number) => {
+    const dayDate = new Date(year, monthIndex, day);
+    //vacationers[activeVacationer.index].selectedPTO.push(dayDate.toISOString());
+  }
+
   if (activeVacationer != null) {
     //console.log(activeVacationer);
   }
@@ -34,7 +39,7 @@ const Month = ({ monthName, monthIndex, year, firstDay, vacationers }: MonthProp
         ))}
 
         {daysOfTheMonth.map((day, index) => (
-          <Day key={index} day={day.day} colorDay={day.colorDay} firstDay={firstDay} />
+          <Day key={index} day={day.day??-1} colorDay={day.colorDay} firstDay={firstDay} callback={handleDayClicked}/>
         ))}
       </div>
     </div>

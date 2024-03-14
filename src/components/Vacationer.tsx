@@ -33,7 +33,8 @@ const Vacationer = ({ index, name, ptoDays, color, selectedPTO }: VacationerProp
             </p>
             <p>
               <span className="font-bold">PTOs:</span> {ptoDays}
-            </p>
+        </p>
+        <p>used PTOs: { activeVacationer?.selectedPTO?.length}</p>
             <div className="flex flex-wrap gap-x-4">
               <p>
                 <span className="font-bold">Color:</span>

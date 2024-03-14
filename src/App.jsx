@@ -8,12 +8,14 @@ const App = () => {
   const year = "2024";
   const vacationers = [
     {
+      index: 0,
       name: "Paty",
       ptoDays: 23,
       color: 0,
       selectedPTO: []
     },
     {
+      index: 1,
       name: "Oriol",
       ptoDays: 28,
       color: 1,

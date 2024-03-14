@@ -5,15 +5,19 @@ import ClickableDay from "./ClickableDay";
 interface DayProps {
   day: number;
   firstDay: number;
-  colorDay?: number;
+  colorDay: number;
+  callback: (day: number) => void;
 }
 
-const Day = ({ day, firstDay, colorDay }: DayProps) => {
+const Day = ({ day, firstDay, colorDay, callback }: DayProps) => {
   const [activeVacationer, _] = useContext(ActiveVacationerContext);
+  const handleDayClicked = () => {
+    callback(day);
+  }
 
   return (
     <div className={day === 1 ? "col-start-" + firstDay : ""}>
-      <ClickableDay colorDay={-1} colorVacationer={activeVacationer?.color}  text={day.toString()} />    
+      <ClickableDay colorDay={colorDay} colorVacationer={activeVacationer?.color} text={day.toString()} callback={ handleDayClicked } />    
     </div>
     );
   

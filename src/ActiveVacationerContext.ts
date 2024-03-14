@@ -1,6 +1,6 @@
 import { createContext } from "react";
 import { VacationerType } from "./Types";
- 
+
 
 const ActiveVacationerContext = createContext<[VacationerType, (activeVacationer: VacationerType) => void]>([
     {

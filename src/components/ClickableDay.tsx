@@ -5,10 +5,11 @@ interface ClickableColorProps {
     colorDay: number;
     colorVacationer: number;
     text: string;
+    callback: () => void;
 }
 
 
-const ClickableDay = ({ colorDay, colorVacationer, text }: ClickableColorProps) => {
+const ClickableDay = ({ colorDay, colorVacationer, text, callback }: ClickableColorProps) => {
     const [activeColor, setActiveColor] = useState(colorDay);
     const getNextColor = (color: number) => {
         if (color === -1) {
@@ -22,6 +23,7 @@ const ClickableDay = ({ colorDay, colorVacationer, text }: ClickableColorProps) 
     function handleClick(activeColor: number) {
         const nextColor = getNextColor(activeColor);
         setActiveColor(nextColor);
+        callback();
     }
     
     return (
